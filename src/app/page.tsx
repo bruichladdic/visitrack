@@ -479,14 +479,6 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-2">
           <p className="text-xs text-slate-500">
             <span className="font-semibold text-slate-700">VisiTrack</span> — Projet personnel de Papa Cheikh Ndiaye
-            {' '}·{' '}
-            <a
-              href="/CV_Papa_Cheikh_Ndiaye.pdf"
-              className="text-teal-700 underline underline-offset-2 hover:text-teal-800"
-              aria-label="Télécharger le CV de Papa Cheikh Ndiaye (PDF)"
-            >
-              Télécharger mon CV (PDF)
-            </a>
           </p>
           <Separator orientation="vertical" className="hidden sm:block h-4" />
           <p className="text-xs text-slate-400">Next.js · TypeScript · Prisma (SQLite) · Recharts · Tailwind CSS</p>
