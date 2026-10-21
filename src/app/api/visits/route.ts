@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { db } from '@/lib/db'
+import { db, ensureDb } from '@/lib/db'
 
 export async function GET() {
   try {
+    await ensureDb()
     const visits = await db.visit.findMany({
       orderBy: [{ day: 'asc' }, { slot: 'asc' }],
     })
@@ -25,6 +26,7 @@ const createSchema = z.object({
 
 export async function POST(req: NextRequest) {
   try {
+    await ensureDb()
     const body = await req.json()
     const parsed = createSchema.safeParse(body)
     if (!parsed.success) {

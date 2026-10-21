@@ -72,6 +72,21 @@ bun run dev        # http://localhost:3000
 > La base est livrée avec une semaine de démonstration réaliste : 15 visites planifiées dans
 > Dakar (Point E, Fann, Médina, Plateau, Ouakam…), statuts mixtes.
 
+## ☁️ Déploiement
+
+Le projet se déploie en un clic sur [Vercel](https://vercel.com) :
+
+1. Importer le dépôt GitHub dans Vercel (*Add New Project* → *Import*).
+2. Aucune variable d'environnement n'est requise : en l'absence de `DATABASE_URL`,
+   l'application provisionne automatiquement sa base SQLite (création du schéma +
+   chargement des données de démonstration au premier appel API).
+3. Déployer — c'est tout.
+
+> **Note démo** : sur infrastructure serverless, le stockage est éphémère par instance ;
+> les données de démonstration se régénèrent automatiquement au démarrage. Pour une
+> persistance durable en production, brancher une base managée (ex. Turso, compatible
+> SQLite) via la variable `DATABASE_URL`.
+
 ## 📁 Structure du projet
 
 ```

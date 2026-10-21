@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { db } from '@/lib/db'
+import { db, ensureDb } from '@/lib/db'
 
 const patchSchema = z.object({
   status: z.enum(['PLANIFIEE', 'TERMINEE', 'REPORTEE']),
@@ -11,6 +11,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await ensureDb()
     const { id } = await params
     const body = await req.json()
     const parsed = patchSchema.safeParse(body)
@@ -33,6 +34,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    await ensureDb()
     const { id } = await params
     await db.visit.delete({ where: { id } })
     return NextResponse.json({ ok: true })
