@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Visit {
+  id        String   @id @default(cuid())
+  client    String
+  type      String // MEDECIN | PHARMACIE | CLINIQUE | HOPITAL
+  quartier  String
+  day       String // "2026-10-21"
+  slot      String // "09:00 - 10:00"
+  objective String
+  status    String   @default("PLANIFIEE") // PLANIFIEE | TERMINEE | REPORTEE
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
